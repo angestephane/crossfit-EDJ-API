@@ -1,4 +1,5 @@
 const Record = require('../databases/record')
+const {v4 : uuid} = require('uuid');
 
 const getAllRecords = () => {
     try {
@@ -17,4 +18,18 @@ const getRecord = (recordId) => {
     }
 }
 
-module.exports = {getAllRecords, getRecord}
+const createRecord = (record) => {
+    const newRecord = {
+        ...record,
+        id : uuid()
+    }
+
+    try{
+        const record = Record.createRecord(newRecord);
+        return record;
+        }catch (err){
+        throw err
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord}

@@ -34,4 +34,28 @@ const getRecord = (req, res) => {
 
 }
 
-module.exports = {getAllRecords, getRecord}
+const createRecord = (req, res) => {
+    const {body} = req
+
+    if(!body.workout || !body.record){
+        res
+            .status(400)
+            .send({data : {
+                error:"Certain champs n'ont pas été rensigné !"
+                }})
+    }
+    const newRecord = {
+        workout : body.workout,
+        record : body.record
+    }
+    try{
+        const record = ServiceRecord.createRecord(newRecord);
+        res.status(201).send({status : 'OK', data : record});
+    }catch (e) {
+        res
+            .status(e?.status || 500)
+            .send({status : 'FAILED', data : {e : e?.message || e}})
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord}

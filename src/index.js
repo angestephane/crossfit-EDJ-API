@@ -12,8 +12,8 @@ app.use(bodyParser.json());// Analyse les données au format json
 
 /** Recuperation de toutes les requêtes
  passant par /api/v1/workout avec v1WorkOutRouter */
-app.use("/api/v1/workouts", v1WorkOutRouter);
-app.use("/api/v1/records", v1RecordsRouter);
+app.use("/api/v1/workout", v1WorkOutRouter);
+app.use("/api/v1/record", v1RecordsRouter);
 
 app.listen(PORT, ()=>{
     console.log(`Listening on port : ${PORT}`);

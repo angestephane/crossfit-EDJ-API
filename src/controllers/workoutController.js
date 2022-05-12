@@ -65,7 +65,7 @@ const addWorkout = (req, res) => {
     }
     try {
         const addWorkout = ServiceWorkout.addWorkout(newWorkout);
-        res.status(201).send({status : 'KO', data : addWorkout})
+        res.status(201).send({status : '0K', data : addWorkout})
     }catch(e) {
         res
             .status(e?.status || 500)
