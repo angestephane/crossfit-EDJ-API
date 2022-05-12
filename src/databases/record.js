@@ -35,4 +35,28 @@ const createRecord = (newRecord) => {
 
 }
 
-module.exports = {getAllRecord, getRecord, createRecord}
+const updateRecord = (recordId, newRecord) => {
+    const recordUpdateIndex = DB.records.findIndex((record) => record.id === recordId)
+    if(recordUpdateIndex == -1){
+        throw {
+            status : 400,
+            message : `Impossible de trouver la référence "${recordId}"`
+        }
+    }
+    const record = {
+        ...DB.records[recordUpdateIndex],
+        ...newRecord,
+    }
+    try{
+        DB.records[recordUpdateIndex] = record
+        saveToDataBase(DB);
+        return record;
+    }catch (e) {
+        throw {
+            status : e?.status || 500,
+            message: e?.message || e
+        }
+    }
+}
+
+module.exports = {getAllRecord, getRecord, createRecord, updateRecord}

@@ -58,4 +58,31 @@ const createRecord = (req, res) => {
     }
 }
 
-module.exports = {getAllRecords, getRecord, createRecord}
+const updateRecord = (req, res) => {
+
+    const {
+        body,
+        params : {recordId}
+    } = req;
+
+    if(!recordId){
+      res
+          .status(400)
+          .send({
+              status : 'FAILED',
+              data : {
+                  error : 'Référence introuvable'
+              }
+          })
+    }
+    try{
+        const recordUpdate = ServiceRecord.updateRecord(recordId, body);
+        res.status(200).send({status : 'OK', data : recordUpdate});
+    }catch (e) {
+        res
+            .status(e?.status || 500)
+            .send({status : 'FAILED', e : e?.message || e})
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord, updateRecord}

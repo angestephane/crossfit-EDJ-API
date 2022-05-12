@@ -12,4 +12,7 @@ router.get('/:recordId', RecordController.getRecord)
 //Endpoint pour ajouter un nouveau record
 router.post('/', RecordController.createRecord);
 
+//Endpoint pour modifier un record
+router.patch('/:recordId', RecordController.updateRecord);
+
 module.exports = router;

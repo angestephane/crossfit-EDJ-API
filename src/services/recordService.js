@@ -32,4 +32,13 @@ const createRecord = (record) => {
     }
 }
 
-module.exports = {getAllRecords, getRecord, createRecord}
+const updateRecord = (recordId, change) => {
+    try{
+        const newRecord = Record.updateRecord(recordId, change);
+        return newRecord;
+    }catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord, updateRecord}
