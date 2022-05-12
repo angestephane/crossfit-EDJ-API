@@ -79,4 +79,24 @@ const deleteRecord = (recordId) => {
     }
 }
 
-module.exports = {getAllRecord, getRecord, createRecord, updateRecord, deleteRecord}
+const getWorkoutRecord = (workoutId) => {
+    try{
+        const record = DB.records.filter((record) => record.workout === workoutId);
+        if(!record){
+            throw {
+                status : 400,
+                message : `Impossible de trouver : "${record}"`
+            }
+    }
+        return record;
+
+    }catch(e){
+        throw {
+            status : e?.status || 500,
+            message : e.message || e
+        }
+    }
+
+}
+
+module.exports = {getAllRecord, getRecord, createRecord, updateRecord, deleteRecord, getWorkoutRecord}

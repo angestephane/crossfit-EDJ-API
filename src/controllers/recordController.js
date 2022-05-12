@@ -114,4 +114,30 @@ const deleteRecord = (req, res) => {
     }
 }
 
-module.exports = {getAllRecords, getRecord, createRecord, updateRecord, deleteRecord}
+const getWorkoutRecord = (req, res) => {
+    const {
+        params : {workoutId}
+    } = req;
+
+    if(!workoutId){
+        res
+            .status(400)
+            .send({
+                status : 'FAILED',
+                data : {
+                    error : "Impossible de trouver la référence"
+                }
+            })
+    }
+
+    try {
+        const record = ServiceRecord.getWorkoutRecord(workoutId);
+        res.status(200).send({status : 'OK', data : record});
+    }catch (e) {
+        res
+            .status(e?.status || 500)
+            .send({status : 'FAILED', data : {e : e?.message || e}})
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord, updateRecord, deleteRecord, getWorkoutRecord}

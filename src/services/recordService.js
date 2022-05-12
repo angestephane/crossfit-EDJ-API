@@ -49,4 +49,13 @@ const deleteRecord = (recordId) => {
     }
 }
 
-module.exports = {getAllRecords, getRecord, createRecord, updateRecord, deleteRecord}
+const getWorkoutRecord = (workoutId) => {
+    try{
+        const records = Record.getWorkoutRecord(workoutId);
+        return records
+    }catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord, updateRecord, deleteRecord, getWorkoutRecord}
