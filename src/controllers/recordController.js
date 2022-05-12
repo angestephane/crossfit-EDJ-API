@@ -103,7 +103,7 @@ const deleteRecord = (req, res) => {
     }
     try {
         ServiceRecord.deleteRecord(recordId, body)
-        res.status(200).send({status : 'OK', data : body})
+        res.status(200).send({status : 'OK', data : {message : "Record supprimé avec succès !"}})
     }catch (e) {
         res
             .status(e?.status || 500)

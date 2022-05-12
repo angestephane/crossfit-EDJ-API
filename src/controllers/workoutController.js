@@ -116,7 +116,7 @@ const deleteWorkout = (req, res) => {
     }
     try {
         ServiceWorkout.deleteWorkout(workoutId, body);
-        res.status(204).send({status : "OK"})
+        res.status(200).send({status : "OK", data : {message : "workout supprimé avec succès !"}})
     }catch (e) {
         res
             .status(e?.status || 500)

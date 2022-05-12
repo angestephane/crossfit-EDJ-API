@@ -18,7 +18,7 @@ const getRecord = (recordId) => {
     }catch (e) {
         throw {
             status : 500,
-            error : error?.message || error
+            error : e?.message || e
         }
     }
 }
@@ -61,14 +61,15 @@ const updateRecord = (recordId, newRecord) => {
 
 const deleteRecord = (recordId) => {
     const getIndexRecord = DB.records.findIndex((record) => record.id === recordId)
-    if(!getIndexRecord){
+    if(getIndexRecord === -1){
         throw {
             status : 400,
             message : `Impossible de trouver la référence ${recordId}`
         }
     }
     try {
-        DB.records.splice(getIndexRecord, 0)
+        DB.records.splice(getIndexRecord, 1)
+        saveToDataBase(DB);
     } catch (e) {
         throw {
             status : e?.status || 500,

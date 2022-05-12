@@ -63,28 +63,6 @@
         "The first three rounds might feel terrible, but stick to it",
         "RX Weights: 205lb/145lb"
       ]
-    },
-    {
-      "name": "Core Buster",
-      "mode": "AMRAP 20",
-      "equipment": [
-        "rack",
-        "barbell",
-        "abmat"
-      ],
-      "exercises": [
-        "15 toes to bars",
-        "10 thrusters",
-        "30 abmat sit-ups"
-      ],
-      "trainerTips": [
-        "Split your toes to bars in two sets maximum",
-        "Go unbroken on the thrusters",
-        "Take the abmat sit-ups as a chance to normalize your breath"
-      ],
-      "id": "a24d2618-01d1-4682-9288-8de1343e53c7",
-      "createdAt": "4/22/2022, 5:50:17 PM",
-      "updatedAt": "4/22/2022, 5:50:17 PM"
     }
   ],
   "members": [
@@ -121,31 +99,5 @@
       "password": "a6dcde7eceb689142f21a1e30b5fdb868ec4cd25d5537d67ac7e8c7816b0e862"
     }
   ],
-  "records": [
-    {
-      "id": "ad75d475-ac57-44f4-a02a-8f6def58ff56",
-      "workout": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
-      "record": "165 reps"
-    },
-    {
-      "id": "0bff586f-2017-4526-9e52-fe3ea46d55ab",
-      "workout": "d8be2362-7b68-4ea4-a1f6-03f8bc4eede7",
-      "record": "7:23 minutes"
-    },
-    {
-      "id": "365cc0bb-ba8f-41d3-bf82-83d041d38b82",
-      "workout": "a24d2618-01d1-4682-9288-8de1343e53c7",
-      "record": "358 reps"
-    },
-    {
-      "id": "62251cfe-fdb6-4fa6-9a2d-c21be93ac78d",
-      "workout": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
-      "record": "145 reps"
-    },
-    {
-      "workout": "d8be2362-7b68-4ea4-a1f6-03f8bc4eede7",
-      "record": "10:05 minutes",
-      "id": "d4000a04-91ef-447a-a8b7-5239338e0626"
-    }
-  ]
+  "records": []
 }
