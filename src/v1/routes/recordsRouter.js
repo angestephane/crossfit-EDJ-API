@@ -15,4 +15,7 @@ router.post('/', RecordController.createRecord);
 //Endpoint pour modifier un record
 router.patch('/:recordId', RecordController.updateRecord);
 
+//Endpoint pour supprimer un record
+router.delete('/:recordId', RecordController.deleteRecord);
+
 module.exports = router;

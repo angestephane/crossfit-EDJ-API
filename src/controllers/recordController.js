@@ -85,4 +85,33 @@ const updateRecord = (req, res) => {
     }
 }
 
-module.exports = {getAllRecords, getRecord, createRecord, updateRecord}
+const deleteRecord = (req, res) => {
+    const {
+        body,
+        params : {recordId}
+    } = req;
+
+    if(!recordId){
+        res
+            .status(400)
+            .send({
+                status : 'FAILED',
+                data : {
+                    error : "Référence introuvable. Vérifiez la référence !"
+                }
+            })
+    }
+    try {
+        ServiceRecord.deleteRecord(recordId, body)
+        res.status(200).send({status : 'OK', data : body})
+    }catch (e) {
+        res
+            .status(e?.status || 500)
+            .send({
+                status : 'FAILED',
+                data : {e : e?.message || e}
+            })
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord, updateRecord, deleteRecord}

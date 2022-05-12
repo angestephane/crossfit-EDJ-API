@@ -59,4 +59,23 @@ const updateRecord = (recordId, newRecord) => {
     }
 }
 
-module.exports = {getAllRecord, getRecord, createRecord, updateRecord}
+const deleteRecord = (recordId) => {
+    const getIndexRecord = DB.records.findIndex((record) => record.id === recordId)
+    if(!getIndexRecord){
+        throw {
+            status : 400,
+            message : `Impossible de trouver la référence ${recordId}`
+        }
+    }
+    try {
+        DB.records.splice(getIndexRecord, 0)
+    } catch (e) {
+        throw {
+            status : e?.status || 500,
+            message : e?.message || e
+        }
+
+    }
+}
+
+module.exports = {getAllRecord, getRecord, createRecord, updateRecord, deleteRecord}

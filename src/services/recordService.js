@@ -41,4 +41,12 @@ const updateRecord = (recordId, change) => {
     }
 }
 
-module.exports = {getAllRecords, getRecord, createRecord, updateRecord}
+const deleteRecord = (recordId) => {
+    try{
+        Record.deleteRecord(recordId);
+    }catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {getAllRecords, getRecord, createRecord, updateRecord, deleteRecord}
