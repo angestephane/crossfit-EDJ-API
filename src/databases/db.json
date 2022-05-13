@@ -63,14 +63,6 @@
         "The first three rounds might feel terrible, but stick to it",
         "RX Weights: 205lb/145lb"
       ]
-    },
-    {
-      "name": "Ange stephane",
-      "gender": "male",
-      "birthDay": "12/11/1997",
-      "email": "jason@mail.com",
-      "password": "$2b$10$S.QtPbi4UXV2PWRhGXPOI.K3NtT7HP.1lWUMu9sYFlYwGjnLwaW82",
-      "id": "a8920491-3b9e-411e-ac74-6e1ec507dfdb"
     }
   ],
   "members": [
@@ -105,15 +97,6 @@
       "dateOfBirth": "08/04/1993",
       "email": "greg@mail.com",
       "password": "a6dcde7eceb689142f21a1e30b5fdb868ec4cd25d5537d67ac7e8c7816b0e862"
-    },
-    {
-      "name": "Ange stephane",
-      "gender": "male",
-      "birthDay": "10/15/2000",
-      "email": "angetest1@gmail.com",
-      "password": "stephanetest",
-      "id": "39bf1c77-5dc6-424e-b816-ee237a3a288d",
-      "dateOfBirth": "10/15/2000"
     },
     {
       "name": "Marie Emmanuel",

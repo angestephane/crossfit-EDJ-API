@@ -69,4 +69,26 @@ const updateMember = (memberId, fieldToUpdate) => {
     }
 }
 
-module.exports = {getAllMembers, getMember, addMember, updateMember}
+const deleteMember = (memberId) => {
+    const memberIndex = DB.members.findIndex((member) => member.id === memberId)
+
+    if(memberIndex === -1){
+        throw {
+            status : 400,
+            message : `Référence "${memberId}" introuvabale`
+        }
+
+    }
+    try{
+        DB.members.splice(memberIndex, 1);
+        saveToDataBase(DB)
+    }catch (e) {
+        throw {
+            status : e?.message || 500,
+            message : e?.message || e
+        }
+
+    }
+}
+
+module.exports = {getAllMembers, getMember, addMember, updateMember, deleteMember}

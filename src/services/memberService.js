@@ -45,4 +45,12 @@ const updateMember = (memberId, fieldToUpdate) => {
     }
 }
 
-module.exports = {getAllMembers, getMember, addMember, updateMember}
+const deleteMember = (memberId) => {
+    try{
+        Member.deleteMember(memberId);
+    }catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {getAllMembers, getMember, addMember, updateMember, deleteMember}

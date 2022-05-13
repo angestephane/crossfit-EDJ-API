@@ -78,7 +78,7 @@ const updateMember = (req, res) => {
 
     try{
         const memberToUpdate = MemberService.updateMember(memberId, body)
-        res.status(200).send({status:'OK', data : memberToUpdate})
+        res.status(201).send({status:'OK', data : memberToUpdate})
     }catch (e) {
         res
             .status(e?.status || 500)
@@ -86,4 +86,25 @@ const updateMember = (req, res) => {
     }
 }
 
-module.exports = {getAllMembers, getMember, addMember, updateMember}
+const deleteMember = (req, res) => {
+    const {
+        params : {memberId}
+    } = req;
+
+    if(!memberId){
+        res
+            .status(400)
+            .send({status:'FAILED',data: {erreur : 'Référence ntrouvable'}})
+    }
+
+    try{
+        MemberService.deleteMember(memberId);
+        res.status(200).send({status :'OK', data: {message : "membre suprimé avec succès !"}})
+    }catch (e) {
+        res
+            .status(e?.status ||500)
+            .send({status:'FAILED',data: {erreur : e?.message || e}})
+    }
+}
+
+module.exports = {getAllMembers, getMember, addMember, updateMember, deleteMember}
