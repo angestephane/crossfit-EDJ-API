@@ -9,4 +9,12 @@ const getAllMembers = () => {
     }
 }
 
-module.exports = {getAllMembers}
+const getMember = (memberId) => {
+    try{
+        return member = Member.getMember(memberId);
+    }catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {getAllMembers, getMember}
