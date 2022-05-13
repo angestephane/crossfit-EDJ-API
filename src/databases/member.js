@@ -1,4 +1,5 @@
 const DB = require('./db.json');
+const {saveToDataBase} = require("./utils");
 
 const getAllMembers = () => {
     try {
@@ -26,4 +27,25 @@ const getMember = (memberId) => {
     }
 }
 
-module.exports = {getAllMembers, getMember}
+const addMember = (newMember) => {
+
+    const existe =
+        DB.members.findIndex((member) => member.email === newMember.email) > -1;
+    if(existe) {
+        throw {
+            status : 400,
+            message : `l'entrainement avec le nom '${newMember.name}' exite déjà`
+
+        };
+    }
+    try{
+        DB.members.push( newMember );
+        saveToDataBase(DB);
+        return newMember;
+    }catch(error){
+        throw {status : 500, message: error?.message || error }
+    }
+
+}
+
+module.exports = {getAllMembers, getMember, addMember}

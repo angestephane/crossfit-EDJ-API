@@ -33,4 +33,35 @@ const getMember = (req, res) => {
     }
 }
 
-module.exports = {getAllMembers, getMember}
+const addMember = (req, res) => {
+    const {body} = req
+    if(
+        !body.name ||
+        !body.gender ||
+        !body.dateOfBirth ||
+        !body.email ||
+        !body.password){
+        res
+            .status(400)
+            .send({status:'FAILED',data: {erreur : "Donnée imcomplet. Veuillez saisir tous les champs"}})
+    }
+
+    const newMember = {
+        name : body.name,
+        gender : body.gender,
+        birthDay : body.dateOfBirth,
+        email : body.email,
+        password : body.password
+    }
+
+    try{
+        const memberToAdd = MemberService.addMember(newMember)
+        res.status(200).send({status:'OK', data : memberToAdd})
+    }catch (e) {
+        res
+            .status(e?.status || 500)
+            .send({status:'FAILED',data: {erreur :e?.message || e}})
+    }
+}
+
+module.exports = {getAllMembers, getMember, addMember}
