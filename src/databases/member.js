@@ -12,11 +12,17 @@ const getMember = (memberId) => {
     try {
     const member = DB.members.find((member) => member.id === memberId)
     if(!member){
-        sendErrorCode("Membre introuvable")
+        throw {
+            status: 400,
+            message : `impossible de trouver la référence "${memberId}"`
+        }
     }
      return member
     }catch (e) {
-        sendErrorCode(e);
+        throw {
+            status: e?.status || 500,
+            message : e?.message || e
+        }
     }
 }
 
