@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const v1WorkOutRouter = require('./v1/routes/workoutRouter')
 const v1RecordsRouter = require('./v1/routes/recordsRouter');
+const v1MembersRouter = require('./v1/routes/memberRouter');
 
 // Création de notre application
 const app = express();
@@ -14,6 +15,7 @@ app.use(bodyParser.json());// Analyse les données au format json
  passant par /api/v1/workout avec v1WorkOutRouter */
 app.use("/api/v1/workout", v1WorkOutRouter);
 app.use("/api/v1/record", v1RecordsRouter);
+app.use("/api/v1/member", v1MembersRouter);
 
 app.listen(PORT, ()=>{
     console.log(`Listening on port : ${PORT}`);
