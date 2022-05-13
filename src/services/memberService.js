@@ -21,11 +21,11 @@ const getMember = (memberId) => {
 }
 
 const addMember = (member) => {
-
+    const password = bcrypt.hashSync(member.password, 10)
     const newMember = {
         ...member,
         id : uuid(),
-        password : bcrypt.hashSync(member.password, 10)
+        password : password
     }
 
     try{
@@ -36,4 +36,13 @@ const addMember = (member) => {
     }
 }
 
-module.exports = {getAllMembers, getMember, addMember}
+const updateMember = (memberId, fieldToUpdate) => {
+    try{
+        return Member.updateMember(memberId, fieldToUpdate);
+    }
+    catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {getAllMembers, getMember, addMember, updateMember}

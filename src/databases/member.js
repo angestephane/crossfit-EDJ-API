@@ -48,4 +48,25 @@ const addMember = (newMember) => {
 
 }
 
-module.exports = {getAllMembers, getMember, addMember}
+const updateMember = (memberId, fieldToUpdate) => {
+    const indexAsFound = DB.members.findIndex((member) => member.id === memberId);
+    if(indexAsFound === -1){
+        throw {
+            status : 400,
+            message : `Impossible de trouver la référence saisi : "${memberId}" `
+        }
+    }
+    try {
+        const MemberToUpdate = {
+            ...DB.members[indexAsFound],
+            ...fieldToUpdate,
+        };
+        DB.members[indexAsFound] = MemberToUpdate;
+        saveToDataBase(DB);
+        return MemberToUpdate;
+    }catch (e) {
+        throw {status : 500, message: e?.message || e }
+    }
+}
+
+module.exports = {getAllMembers, getMember, addMember, updateMember}

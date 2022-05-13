@@ -5,8 +5,9 @@ const router = express.Router();
 
 
 
-router.get('/', MemberController.getAllMembers)
-router.get('/:memberId', MemberController.getMember)
+router.get('/', MemberController.getAllMembers);
+router.get('/:memberId', MemberController.getMember);
 router.post('/', MemberController.addMember);
+router.patch('/:memberId', MemberController.updateMember);
 
 module.exports = router;

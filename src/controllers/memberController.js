@@ -64,4 +64,26 @@ const addMember = (req, res) => {
     }
 }
 
-module.exports = {getAllMembers, getMember, addMember}
+const updateMember = (req, res) => {
+    const {
+        body,
+        params : {memberId}
+    } = req
+
+    if(!memberId){
+        res
+            .status(400)
+            .send({status:'FAILED',data: {erreur :"Impossible de trouver la référence saisi"}})
+    }
+
+    try{
+        const memberToUpdate = MemberService.updateMember(memberId, body)
+        res.status(200).send({status:'OK', data : memberToUpdate})
+    }catch (e) {
+        res
+            .status(e?.status || 500)
+            .send({status:'FAILED',data: {erre : e?.message || e}})
+    }
+}
+
+module.exports = {getAllMembers, getMember, addMember, updateMember}

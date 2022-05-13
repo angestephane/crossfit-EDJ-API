@@ -110,9 +110,18 @@
       "name": "Ange stephane",
       "gender": "male",
       "birthDay": "10/15/2000",
-      "email": "angetest@gmail.com",
-      "password": "$2b$10$FJCMaP0aQsqbG.YzWz2UeOg8nMSUkueQC/lDeMCGd4fHQP.YoTT1a",
-      "id": "39bf1c77-5dc6-424e-b816-ee237a3a288d"
+      "email": "angetest1@gmail.com",
+      "password": "stephanetest",
+      "id": "39bf1c77-5dc6-424e-b816-ee237a3a288d",
+      "dateOfBirth": "10/15/2000"
+    },
+    {
+      "name": "Marie Emmanuel",
+      "gender": "Femal",
+      "birthDay": "11/10/2003",
+      "email": "emma@gmail.com",
+      "password": "$2b$10$VbSQwL0ZrAClYwKtYbOOguisVOaP/UjzmZeIPjMdq8RdpybwVpR.e",
+      "id": "88dad83a-a382-4f61-90be-69dd23952917"
     }
   ],
   "records": [
