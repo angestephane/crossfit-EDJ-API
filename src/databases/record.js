@@ -1,6 +1,8 @@
 const DB = require('./db.json');
 const {saveToDataBase} = require('./utils')
 
+const ServiceMembers = require('../services/memberService');
+
 const getAllRecord = () => {
     return DB.records;
 }
@@ -37,7 +39,7 @@ const createRecord = (newRecord) => {
 
 const updateRecord = (recordId, newRecord) => {
     const recordUpdateIndex = DB.records.findIndex((record) => record.id === recordId)
-    if(recordUpdateIndex == -1){
+    if(recordUpdateIndex === -1){
         throw {
             status : 400,
             message : `Impossible de trouver la référence "${recordId}"`
@@ -81,14 +83,23 @@ const deleteRecord = (recordId) => {
 
 const getWorkoutRecord = (workoutId) => {
     try{
-        const record = DB.records.filter((record) => record.workout === workoutId);
-        if(!record){
+        const records = DB.records.filter((record) => record.workout === workoutId);
+        if(!records){
             throw {
                 status : 400,
                 message : `Impossible de trouver : "${record}"`
             }
     }
-        return record;
+        const newRecords = []
+        records.forEach(e=>{
+           newRecords.push({
+               ... e,
+               member : ServiceMembers.getMember(e.memberId)
+           })
+
+       })
+
+        return newRecords;
 
     }catch(e){
         throw {
