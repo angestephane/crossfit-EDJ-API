@@ -3,9 +3,20 @@ const DB = require('./db.json');
 const { saveToDataBase } = require('./utils');
 
 //Retourne toutes les données de la base de données.
-const getAllWorkouts = () => {
-    return DB.workouts;
-}
+const getAllWorkouts = (paramsFilter) => {
+    try{
+        let workouts = DB.workouts;
+        if(paramsFilter){
+            return  DB.workouts.filter((workout) =>
+                workout.mode.toLocaleString().includes(paramsFilter));
+        }
+
+        return workouts;
+    }catch(e){
+        throw {status: 500, message: e}
+    }
+    }
+
 
 const addWorkouts = (newWorkout) => {
     /**
