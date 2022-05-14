@@ -91,10 +91,18 @@ const getWorkoutRecord = (workoutId) => {
             }
     }
         const newRecords = []
+
         records.forEach(e=>{
+            const member = {
+                name : ServiceMembers.getMember(e.memberId).name,
+                gender : ServiceMembers.getMember(e.memberId).gender,
+                dateOfBirth : ServiceMembers.getMember(e.memberId).dateOfBirth,
+                email : ServiceMembers.getMember(e.memberId).email
+
+            }
            newRecords.push({
                ... e,
-               member : ServiceMembers.getMember(e.memberId)
+               member : member
            })
 
        })
