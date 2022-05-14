@@ -2,12 +2,17 @@ const ServiceWorkout = require('../services/workoutService')
 
 // Méthode retournant tous les entrainements
 const getAllWorkouts = (req, res) => {
-    const allWorkouts = ServiceWorkout.getAllWorkouts();
-    res.send({
-        status: 'ok',
-        data: allWorkouts
-    });
+    try{
+        const allWorkouts = ServiceWorkout.getAllWorkouts();
+        res.status(200).send({ status: 'ok', data: allWorkouts});
+    } catch (e) {
+        res
+            .status(e?.status || 500)
+            .send({status : 'FAILED', data : {e : e?.message || e}})
+    }
+
 }
+
 
 // Méthode retournant un entrainement spécifique
 const getWorkout = (req, res) => {
