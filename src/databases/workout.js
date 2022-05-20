@@ -1,22 +1,27 @@
 const DB = require('./db.json');
 
-const { saveToDataBase } = require('./utils');
-
+const {saveToDataBase} = require('./utils');
 //Retourne toutes les données de la base de données.
-const getAllWorkouts = (paramsFilter) => {
-    try{
+const getAllWorkouts = (mode, equipement, length) => {
+    try {
         let workouts = DB.workouts;
-        if(paramsFilter){
-            return  DB.workouts.filter((workout) =>
-                workout.mode.toLocaleString().includes(paramsFilter));
+        if (equipement) {
+           return workouts.filter((workout) =>
+               workout.equipment.includes(equipement))
         }
+        if(mode){
+            return workouts.filter((workout) =>
+                workout.mode.toLocaleString().includes(mode))
 
+        }
+        if(length){
+            return workouts.slice(0, length)
+        }
         return workouts;
-    }catch(e){
+    } catch (e) {
         throw {status: 500, message: e}
     }
-    }
-
+}
 
 const addWorkouts = (newWorkout) => {
     /**
@@ -33,81 +38,81 @@ const addWorkouts = (newWorkout) => {
 
     const existe =
         DB.workouts.findIndex((workout) => workout.name === newWorkout.name) > -1;
-    if(existe) {
+    if (existe) {
         throw {
-            status : 400,
-            message : `l'entrainement avec le nom '${newWorkout.name}' exite déjà`
+            status: 400,
+            message: `l'entrainement avec le nom '${newWorkout.name}' exite déjà`
 
         };
     }
-    try{
-        DB.workouts.push( newWorkout );
+    try {
+        DB.workouts.push(newWorkout);
         saveToDataBase(DB);
         return newWorkout;
-    }catch(error){
-        throw {status : 500, message: error?.message || error }
+    } catch (error) {
+        throw {status: 500, message: error?.message || error}
     }
 
 }
 
 const getWorkout = (workoutId) => {
 
-    try{
+    try {
         const workout = DB.workouts.find((workout) => workout.id === workoutId);
-        if(!workout){
+        if (!workout) {
             throw {
-                status : 400,
-                message : "Il existe une erreur sur la référence de l'entrainement : "
-                +`${workoutId} incorrecte`
+                status: 400,
+                message: "Il existe une erreur sur la référence de l'entrainement : "
+                    + `${workoutId} incorrecte`
             };
         }
         return workout;
-    }catch(error){
-        throw {status : 500, message: error?.message || error }
+    } catch (error) {
+        throw {status: 500, message: error?.message || error}
     }
 }
 
 const updateWorkout = (workoutId, changes) => {
     const indexForUpdate =
         DB.workouts.findIndex((workout) => workout.id === workoutId);
-    if(indexForUpdate === -1 ){
+    if (indexForUpdate === -1) {
         throw {
-            status : 400,
-            message : "Il existe une erreur sur la référence de l'entrainement : "
-                +`${workoutId} incorrecte`
+            status: 400,
+            message: "Il existe une erreur sur la référence de l'entrainement : "
+                + `${workoutId} incorrecte`
         }
     }
     try {
         const workoutUpdated = {
             ...DB.workouts[indexForUpdate],
             ...changes,
-            updatedAt : new Date().toLocaleString("fr-FR", {timeZone : "UTC"})
+            updatedAt: new Date().toLocaleString("fr-FR", {timeZone: "UTC"})
         };
         DB.workouts[indexForUpdate] = workoutUpdated;
         saveToDataBase(DB);
         return workoutUpdated;
-    }catch (e) {
-        throw {status : 500, message: e?.message || e }
+    } catch (e) {
+        throw {status: 500, message: e?.message || e}
     }
 
 }
 
 const deleteWorkout = (workoutId) => {
-    try{
+    try {
         const workoutIndex =
             DB.workouts.findIndex((workout) => workout.id === workoutId);
-        if(workoutIndex === -1){
+        if (workoutIndex === -1) {
             throw {
-                status : 400,
-                message : `impossible de trouver l'entrainement avec la référence : ${workoutId}`
+                status: 400,
+                message: `impossible de trouver l'entrainement avec la référence : ${workoutId}`
             }
         }
         DB.workouts.splice(workoutIndex, 1);
         saveToDataBase(DB);
-    }catch (e) {
-        throw {status : e?.status || 500, message: e?.message || e }
+    } catch (e) {
+        throw {status: e?.status || 500, message: e?.message || e}
     }
 
 }
 
-module.exports = { getAllWorkouts, addWorkouts, getWorkout, deleteWorkout, updateWorkout }
+module.exports = {getAllWorkouts, addWorkouts, getWorkout, deleteWorkout, updateWorkout}

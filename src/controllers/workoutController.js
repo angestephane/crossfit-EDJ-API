@@ -2,12 +2,12 @@ const ServiceWorkout = require('../services/workoutService')
 
 // Méthode retournant tous les entrainements
 const getAllWorkouts = (req, res) => {
-    const { mode } = req.query;
+    const { equipement, mode, length } = req.query;
 
-    try{
-        const allWorkouts = ServiceWorkout.getAllWorkouts(mode);
-        res.status(200).send({ status: 'ok', data: allWorkouts});
-    } catch (e) {
+    try {
+            const allWorkouts = ServiceWorkout.getAllWorkouts(mode, equipement, length);
+            res.status(200).send({status: 'ok', data: allWorkouts});
+    }catch (e) {
         res
             .status(e?.status || 500)
             .send({status : 'FAILED', data : {e : e?.message || e}})
