@@ -1,6 +1,34 @@
 const DB = require('./db.json');
 const {saveToDataBase} = require("./utils");
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     member:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           example: 12a410bc-849f-4e7e-bfc8-4ef283ee4b19
+ *         name:
+ *           type: string
+ *           example: Jason Miller
+ *         gender:
+ *           type: string
+ *           example: male
+ *         dateOfBirth:
+ *           type: string
+ *           example: 23/04/1990
+ *         email:
+ *           type: string
+ *           example: jason@mail.com
+ *         password:
+ *           type: string
+ *           example: 666349420ec497c1dc890c45179d44fb13220239325172af02d1fb6635922956,
+ *
+ */
+
 const getAllMembers = () => {
     try {
         return DB.members
