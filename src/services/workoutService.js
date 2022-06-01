@@ -32,6 +32,8 @@ const getWorkout = (workoutId) => {
 const addWorkout = (newWorkout) => {
     const workoutToInsert = {
         ...newWorkout,
+        createdAt: new Date().toLocaleString('fr-FR', {timeZone: 'UTC'}),
+        updatedAt: new Date().toLocaleString('fr-FR', {timeZone: 'UTC'}),
         id : uuid(),
     }
     try {

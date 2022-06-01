@@ -44,28 +44,13 @@ router.get('/:recordId', RecordController.getRecord)
  *     tags:
  *       - Records
  *     summary: Ajouter un nouveau record
- *     description: Crée un nouveau record
- *     consumes:
- *        - application/json
- *     parameters:
- *        - in: body
- *          description: création d'un nouveau record
- *          schema:
- *              type: objet
- *              required:
- *                  - workout
- *                  - record
- *                  - memberId
- *              properties:
- *                  workout:
- *                      type: string
- *                      example: 4a3d9aaa-608c-49a7-a004-66305ad4ab50
- *                  record:
- *                      type: string
- *                  memberId:
- *                      type: string
- *                  member:
- *                      type: string
+ *     requestBody:
+ *      description: Optional description in *Markdown*
+ *      required: false
+ *      content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/record'
  *
  *     responses:
  *       201:

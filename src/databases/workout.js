@@ -41,6 +41,36 @@ const {saveToDataBase} = require('./utils');
  *           example: ["Split the 21 thrusters as needed", "Try to do the 9 and 6 thrusters unbroken", "RX Weights: 115lb/75lb"]
  */
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     workoutdto:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           example: Tommy V
+ *         mode:
+ *           type: string
+ *           example: For Time
+ *         equipment:
+ *           type: array
+ *           items:
+ *             type: string
+ *           example: ["barbell", "rope"]
+ *         exercises:
+ *           type: array
+ *           items:
+ *             type: string
+ *           example: ["21 thrusters", "12 rope climbs, 15 ft", "15 thrusters", "9 rope climbs, 15 ft", "9 thrusters", "6 rope climbs, 15 ft"]
+ *         astuces:
+ *           type: array
+ *           items:
+ *             type: string
+ *           example: ["Split the 21 thrusters as needed", "Try to do the 9 and 6 thrusters unbroken", "RX Weights: 115lb/75lb"]
+ */
+
 //Retourne toutes les données de la base de données.
 const getAllWorkouts = (mode, equipement, length) => {
     try {

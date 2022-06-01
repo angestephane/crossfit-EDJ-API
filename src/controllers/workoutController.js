@@ -47,7 +47,7 @@ const addWorkout = (req, res) => {
     const {body} = req;
     if( !body.name
         || !body.mode
-        || !body.equipement
+        || !body.equipment
         || !body.exercises
         || !body.astuces){
         res.status(400).send({
@@ -59,14 +59,14 @@ const addWorkout = (req, res) => {
                     "'mode', " +
                     "'equipement', " +
                     "'exercises', " +
-                    "'status'"
+                    "'astuces'"
             }
         })
     }
     const newWorkout = {
         name : body.name,
         mode : body.mode,
-        equipement : body.equipement,
+        equipment : body.equipment,
         exercises : body.exercises,
         astuces : body.astuces,
     }

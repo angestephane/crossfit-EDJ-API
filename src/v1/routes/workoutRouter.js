@@ -51,6 +51,26 @@ router.get("/:workoutId", WorkoutController.getWorkout);
 //Enpoint pour retrouver tous les record dans un entrainement
 router.get('/:workoutId/records', RecordController.getWorkoutRecord)
 
+/**
+ * @openapi
+ * /api/v1/workout:
+ *   post:
+ *     tags:
+ *       - Workouts
+ *     summary: utiliser pour ajouter un nouvel entrainement
+ *     description: Cette methode permet d'ajouter un nouvel entrainement
+ *     requestBody:
+ *      required: true
+ *      content:
+ *          application/json:
+ *              schema:
+ *                 $ref: '#/components/schemas/workoutdto'
+ *     responses:
+ *       200:
+ *         description: entrainement crée avec succès !
+ *
+ */
+
 //Endpoint permettant d'ajouter un nouvel entrainenemnet
 router.post("/",  WorkoutController.addWorkout)
 

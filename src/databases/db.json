@@ -18,7 +18,7 @@
       ],
       "createdAt": "4/20/2022, 2:21:56 PM",
       "updatedAt": "4/20/2022, 2:21:56 PM",
-      "trainerTips": [
+      "astuces": [
         "Split the 21 thrusters as needed",
         "Try to do the 9 and 6 thrusters unbroken",
         "RX Weights: 115lb/75lb"
@@ -37,7 +37,7 @@
       ],
       "createdAt": "1/25/2022, 1:15:44 PM",
       "updatedAt": "3/10/2022, 8:21:56 AM",
-      "trainerTips": [
+      "astuces": [
         "Deadlifts are meant to be light and fast",
         "Try to aim for unbroken sets",
         "RX Weights: 135lb/95lb"
@@ -58,11 +58,40 @@
       ],
       "createdAt": "11/20/2021, 5:39:07 PM",
       "updatedAt": "4/22/2022, 5:49:18 PM",
-      "trainerTips": [
+      "astuces": [
         "Aim for unbroken push jerks",
         "The first three rounds might feel terrible, but stick to it",
         "RX Weights: 205lb/145lb"
       ]
+    },
+    {
+      "createdAt": "01/06/2022, 13:54:33",
+      "updatedAt": "01/06/2022, 13:54:33",
+      "id": "f0532a97-fc6c-4681-94c4-84f9d65265e0"
+    },
+    {
+      "name": "Boost abdos",
+      "mode": "For Time",
+      "equipment": [
+        "tapis"
+      ],
+      "exercises": [
+        "100 crunch",
+        "Maintient static du bras: 2min",
+        "Abdominaux jambes tendues : ciseaux",
+        "Abdominaux jambes tendues : petit battement",
+        "Les obliques",
+        "Le gainage latéral",
+        "La planche : 20s"
+      ],
+      "astuces": [
+        "Votre bassin ne doit pas tomber : GL",
+        "Le coude droit vient toucher le genou gauche puis inversement : les obliques",
+        " contrôler la position à l’aide d’un miroir."
+      ],
+      "createdAt": "01/06/2022, 13:58:47",
+      "updatedAt": "01/06/2022, 13:58:47",
+      "id": "e6086c31-c388-47a4-95a7-7737f6dae3a4"
     }
   ],
   "members": [
@@ -144,6 +173,16 @@
     },
     {
       "id": "65d85da4-6032-44a0-9f0f-066acea42870"
+    },
+    {
+      "workout": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "record": "7:23 minutes",
+      "id": "ae41fcd4-1de5-4490-b381-050c81912e6e"
+    },
+    {
+      "workout": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "record": "7:23 minutes",
+      "id": "c4c99c50-1075-45b4-abac-1cbd9f2afbd5"
     }
   ]
 }
