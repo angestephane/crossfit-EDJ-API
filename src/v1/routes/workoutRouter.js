@@ -13,6 +13,8 @@ cache = apicache.middleware
  * @openapi
  * /api/v1/workout:
  *   get:
+ *     description: retourne tous les entrainements
+ *     summary: retourne tous les entrainements
  *     tags:
  *       - Workouts
  *     parameters:
@@ -45,8 +47,49 @@ cache = apicache.middleware
 //Endpoint retournant tous les entrainement
 router.get("/", cache('2 minutes'), WorkoutController.getAllWorkouts);
 
+/**
+ * @openapi
+ * /api/v1/workout/{workoutId}: {
+ *     get: {
+ *         "description": retourne l'entrainement de l'id spécifié.,
+ *         "summary": "retourne un entrainement via son id",
+ *         "tags": [
+ *             "Workouts"
+ *         ],
+ *         "parameters" : [
+ *             {
+ *                  "name": "workoutId",
+ *                  "required": true,
+ *                  "in": "path",
+ *                  "description": "Id du workout"
+ *             }
+ *         ],
+ *         "responses": {
+ *             "200": {
+ *                 "description": "donnée relatives à l'entrainement",
+ *                 "content": {
+ *                     "application/json":{
+ *                         "schema": {
+ *                             "$ref": "#/components/schemas/workout"
+ *                         }
+ *                     }
+ *                    }
+ *             }
+ *         },
+ *         "default": {
+ *             "description": "erreur inattendu"
+ *         }
+ *     }
+ * }
+ *
+ */
 //Endpoint retournant un entrainement spécifique
 router.get("/:workoutId", WorkoutController.getWorkout);
+
+/**
+ * @openapi
+ * /api/v1/workout/work
+ */
 
 //Enpoint pour retrouver tous les record dans un entrainement
 router.get('/:workoutId/records', RecordController.getWorkoutRecord)
@@ -72,7 +115,7 @@ router.get('/:workoutId/records', RecordController.getWorkoutRecord)
  */
 
 //Endpoint permettant d'ajouter un nouvel entrainenemnet
-router.post("/",  WorkoutController.addWorkout)
+router.post("/", WorkoutController.addWorkout)
 
 //Endpoint permettant de modifier un entrainenemnet
 router.patch("/:workoutId", WorkoutController.updateWorkout)

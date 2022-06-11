@@ -1,11 +1,24 @@
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-// Information basique consernant notre api
+// document réalisé via : https://swagger.io/specification/#infoObject
 const options = {
     definition: {
         openapi: "3.0.0",
-        info: { title: "Crossfit EDJ API", version: "1.0.0" },
+        info: {
+            title: "Crossfit EDJ API",
+            version: "1.0.0",
+            description: "cette api fournit des données sur des entrainements, " +
+                "Les clients du club " +
+                "Et les records des clients par rapport à un entrainement ",
+            contact: {
+                name: "ange stephane",
+                email: "boguhestephane97@gmail.com",
+            },
+            license: {
+                name: "libre",
+            },
+        },
     },
     apis: [
         "./src/v1/routes/memberRouter.js",
@@ -33,4 +46,4 @@ const swaggerDocs = (app, port) => {
     );
 };
 
-module.exports = { swaggerDocs };
+module.exports = {swaggerDocs};
