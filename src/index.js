@@ -5,8 +5,13 @@ const v1WorkOutRouter = require('./v1/routes/workoutRouter')
 const v1RecordsRouter = require('./v1/routes/recordsRouter');
 const v1MembersRouter = require('./v1/routes/memberRouter');
 
+const dbConnexion = require('./databases/connexion')
+
 //Swagger documentation
 const { swaggerDocs: V1SwaggerDocs } = require("./v1/swagger");
+
+//Connexion à la base de données
+dbConnexion();
 
 // Création de notre application
 const app = express();
