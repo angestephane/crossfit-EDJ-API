@@ -31,7 +31,7 @@ const router = express.Router();
  *                     $ref: "#/components/schemas/member"
  *
  */
-//Endpoint retournant tous les records
+//Endpoint retournant tous les records.js
 router.get('/', RecordController.getAllRecords);
 
 //Endpoint retournant un record spécifique

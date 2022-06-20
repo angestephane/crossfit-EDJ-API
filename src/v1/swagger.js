@@ -10,7 +10,7 @@ const options = {
             version: "1.0.0",
             description: "cette api fournit des données sur des entrainements, " +
                 "Les clients du club " +
-                "Et les records des clients par rapport à un entrainement ",
+                "Et les records.js des clients par rapport à un entrainement ",
             contact: {
                 name: "ange stephane",
                 email: "boguhestephane97@gmail.com",
