@@ -45,31 +45,6 @@ const getWorkout = (req, res) => {
 // Méthode ajoutant un entrainemnt
 const addWorkout = async (req, res) => {
     const {body} = req;
-    if( !body.name
-        || !body.mode
-        || !body.equipment
-        || !body.exercises
-        || !body.astuces){
-        res.status(400).send({
-            status : '400 FAILED',
-            data : {
-                error :
-                "L'un des champs n'a pas été renseigné. Verifiez le " +
-                    "'name', " +
-                    "'mode', " +
-                    "'equipement', " +
-                    "'exercises', " +
-                    "'astuces'"
-            }
-        })
-    }
-    const newWorkout = {
-        name : body.name,
-        mode : body.mode,
-        equipment : body.equipment,
-        exercises : body.exercises,
-        astuces : body.astuces,
-    }
     try {
         const addWorkout = await ServiceWorkout.addWorkout(body);
         res.status(201).send({status : '0K', data : addWorkout})
