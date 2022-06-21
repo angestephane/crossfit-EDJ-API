@@ -43,7 +43,7 @@ const getWorkout = (req, res) => {
 }
 
 // Méthode ajoutant un entrainemnt
-const addWorkout = (req, res) => {
+const addWorkout = async (req, res) => {
     const {body} = req;
     if( !body.name
         || !body.mode
@@ -71,7 +71,7 @@ const addWorkout = (req, res) => {
         astuces : body.astuces,
     }
     try {
-        const addWorkout = ServiceWorkout.addWorkout(newWorkout);
+        const addWorkout = await ServiceWorkout.addWorkout(body);
         res.status(201).send({status : '0K', data : addWorkout})
     }catch(e) {
         res

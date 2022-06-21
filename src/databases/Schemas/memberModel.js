@@ -6,5 +6,5 @@ const memberSchema = new mongoose.Schema({
     birthday: String,
     email: String,
     hash: String,
-})
+}, {timestamps: true})
 module.exports = mongoose.model('Member', memberSchema)

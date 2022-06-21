@@ -29,7 +29,7 @@ const getWorkout = (workoutId) => {
 
 }
 
-const addWorkout = (newWorkout) => {
+const addWorkout = async (newWorkout) => {
     const workoutToInsert = {
         ...newWorkout,
         createdAt: new Date().toLocaleString('fr-FR', {timeZone: 'UTC'}),
@@ -37,7 +37,7 @@ const addWorkout = (newWorkout) => {
         id : uuid(),
     }
     try {
-        return createdWorkout = Workout.addWorkouts(workoutToInsert);
+        return await Workout.addWorkouts(newWorkout);
     }catch(err) {
         throw err
     }

@@ -10,7 +10,7 @@ const options = {
             version: "1.0.0",
             description: "cette api fournit des données sur des entrainements, " +
                 "Les clients du club " +
-                "Et les records.js des clients par rapport à un entrainement ",
+                "Et les recordsModel.js des clients par rapport à un entrainement ",
             contact: {
                 name: "ange stephane",
                 email: "boguhestephane97@gmail.com",
@@ -26,7 +26,7 @@ const options = {
         "./src/v1/routes/recordsRouter.js",
         "./src/databases/workout.js",
         "./src/databases/record.js",
-        "./src/databases/member.js"],
+        "./src/databases/memberModel.js"],
 };
 
 // documentation en format json

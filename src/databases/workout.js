@@ -1,5 +1,7 @@
 const DB = require('./db.json');
 
+const Workout = require('../databases/Schemas/workoutsModel')
+
 const {saveToDataBase} = require('./utils');
 
 /**
@@ -93,7 +95,7 @@ const getAllWorkouts = (mode, equipement, length) => {
     }
 }
 
-const addWorkouts = (newWorkout) => {
+const addWorkouts = async (newWorkout) => {
     /**
      * *findIndex returne -1 si la condition n'est pas verifiée voir la doc 👇🏾
      * *!https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
@@ -105,20 +107,9 @@ const addWorkouts = (newWorkout) => {
      * TODO : Si l'élément existe on sort de la méthode et il y aura uncun
      * TODO : enregistrement, sinon l'élément sera ajouté.
      * **/
-
-    const existe =
-        DB.workouts.findIndex((workout) => workout.name === newWorkout.name) > -1;
-    if (existe) {
-        throw {
-            status: 400,
-            message: `l'entrainement avec le nom '${newWorkout.name}' exite déjà`
-
-        };
-    }
     try {
-        DB.workouts.push(newWorkout);
-        saveToDataBase(DB);
-        return newWorkout;
+        const workout = new Workout({...newWorkout})
+        return await workout.save();
     } catch (error) {
         throw {status: 500, message: error?.message || error}
     }
