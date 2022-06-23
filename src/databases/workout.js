@@ -108,6 +108,10 @@ const addWorkouts = async (newWorkout) => {
      * TODO : enregistrement, sinon l'élément sera ajouté.
      * **/
     try {
+        const testData = Workout.find({name: newWorkout.name})
+        if(testData){
+            throw {status:409, message: 'Workout existant !'}
+        }
         const workout = new Workout({...newWorkout})
         return await workout.save();
     } catch (error) {

@@ -9,7 +9,10 @@
   "author": "ange stephane",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.7.1"
   },
   "dependencies": {
     "apicache": "^1.6.3",

@@ -51,7 +51,7 @@ const addWorkout = async (req, res) => {
     }catch(e) {
         res
             .status(e?.status || 500)
-            .send({status : 'FAILED', data : {e : e?.message || e}})
+            .send({status : 'FAILED', data : {message_erreur : e?.message || e}})
     }
 
 }
